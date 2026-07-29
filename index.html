@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Futebol em Foco</title>
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    /* Cabeçalho */
+    header {
+      background-color: #1b4332;
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Navegação */
+    nav {
+      background-color: #2d6a4f;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 0.8rem;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #52b788;
+    }
+
+    /* Layout Principal */
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+    }
+
+    /* Artigos */
+    .post {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .post h2 {
+      color: #1b4332;
+      margin-bottom: 0.5rem;
+    }
+
+    .post .meta {
+      font-size: 0.85rem;
+      color: #777;
+      margin-bottom: 1rem;
+    }
+
+    .post p {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    /* Botão de Curtir */
+    .like-btn {
+      background-color: #40916c;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+
+    .like-btn:hover {
+      background-color: #2d6a4f;
+    }
+
+    /* Barra Lateral (Sidebar) */
+    aside {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      height: fit-content;
+    }
+
+    aside h3 {
+      color: #1b4332;
+      border-bottom: 2px solid #52b788;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    aside ul {
+      list-style: none;
+    }
+
+    aside ul li {
+      margin-bottom: 0.8rem;
+    }
+
+    aside ul li a {
+      color: #2d6a4f;
+      text-decoration: none;
+    }
+
+    aside ul li a:hover {
+      text-decoration: underline;
+    }
+
+    /* Rodapé */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: #1b4332;
+      color: white;
+      margin-top: 2rem;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>⚽ Futebol em Foco</h1>
+    <p>As últimas notícias, táticas e curiosidades do mundo da bola.</p>
+  </header>
+
+  <nav>
+    <a href="#">Início</a>
+    <a href="#">Campeonatos</a>
+    <a href="#">Mercado da Bola</a>
+    <a href="#">Contato</a>
+  </nav>
+
+  <div class="container">
+    <main>
+      <article class="post">
+        <h2>A evolução do futebol moderno e o uso dos dados</h2>
+        <div class="meta">Publicado em 24 de Maio de 2024 por João Silva</div>
+        <p>O futebol mudou drasticamente nos últimos dez anos. A análise de desempenho através de métricas avançadas (como xG - gols esperados) revolucionou a forma como técnicos preparam suas equipes...</p>
+        <button class="like-btn" onclick="curtir(this)">❤️ Curtir (<span class="count">0</span>)</button>
+      </article>
+
+      <article class="post">
+        <h2>Expectativas para a reta final dos campeonatos</h2>
+        <div class="meta">Publicado em 22 de Maio de 2024 por Maria Santos</div>
+        <p>Com as rodadas decisivas se aproximando, a briga pelo título e a luta contra o rebaixamento prometem emoções fortes até o último minuto da temporada...</p>
+        <button class="like-btn" onclick="curtir(this)">❤️ Curtir (<span class="count">0</span>)</button>
+      </article>
+    </main>
+
+    <aside>
+      <h3>Últimas Notícias</h3>
+      <ul>
+        <li><a href="#">Novo reforço anunciado pelo líder do campeonato</a></li>
+        <li><a href="#">Análise tática da última rodada</a></li>
+        <li><a href="#">Promessas da base que ganharam destaque</a></li>
+      </ul>
+    </aside>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Futebol em Foco - Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    function curtir(botao) {
+      // Localiza o contador dentro do botão clicado
+      const contador = botao.querySelector('.count');
+      let numeroCurtidas = parseInt(contador.innerText);
+      
+      // Incrementa a contagem de curtidas
+      numeroCurtidas++;
+      contador.innerText = numeroCurtidas;
+    }
+  </script>
+
+</body>
+</html>
